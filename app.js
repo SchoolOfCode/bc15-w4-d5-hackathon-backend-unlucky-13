@@ -8,7 +8,7 @@ const app = express();
 const port = 4000;
 
 //imported functions from animals.js
-import { addAnimal } from './animals.js';
+import { addAnimal } from "./animals.js";
 
 
 // Middleware

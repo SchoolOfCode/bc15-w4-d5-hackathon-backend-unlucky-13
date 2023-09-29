@@ -25,4 +25,4 @@ return newAnimal;
 }
 
 
-addAnimal("koi fish", "the oldest koi fish lived to around 200 years old", "ponds and rivers");
+// addAnimal("koi fish", "the oldest koi fish lived to around 200 years old", "ponds and rivers");
