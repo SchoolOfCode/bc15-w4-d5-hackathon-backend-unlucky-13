@@ -24,5 +24,9 @@ await fs.writeFile(filePath, JSON.stringify(animalList, null, 3), "utf-8"); // s
 return newAnimal;
 }
 
-
-// addAnimal("koi fish", "the oldest koi fish lived to around 200 years old", "ponds and rivers");
+// GET all animals function
+export async function allAnimals () {
+    const animalsJSON = await fs.readFile(filePath, "utf-8"); //reading the JSON file
+    const animalList = JSON.parse(animalsJSON); // putting the JSON into format that JS can read - like a translator 
+    return animalList;
+}

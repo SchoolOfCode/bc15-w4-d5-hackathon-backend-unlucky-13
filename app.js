@@ -8,7 +8,10 @@ const app = express();
 const port = 4000;
 
 //imported functions from animals.js
-import { addAnimal } from "./animals.js";
+import {
+    addAnimal,
+    allAnimals
+ } from "./animals.js";
 
 
 // Middleware
@@ -38,4 +41,15 @@ app.post("/animals", async function(req, res){
     }
     // Send the response with a 201 code
     return res.status(201).json(responseObject);
+})
+
+// GET request to return all animals
+app.get("/animals", async function(req, res){
+    // Making response object
+    const responseObject = {
+        status: 'success',
+        data: await allAnimals()
+    }
+    // Send the resonse with a 200 codwe
+    return res.status(200).json(responseObject);
 })
