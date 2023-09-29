@@ -58,18 +58,39 @@ export async function deleteAnimal(id) {
 
     let animalIndexToBeDeleted = null; 
 
-// search for the animal by id 
-for (let i = 0; i < animalList.length; i++) { 
+    // search for the animal by id 
+    for (let i = 0; i < animalList.length; i++) { 
     // console.log(`loop counter ${i}`) // debug logger
     if (animalList[i].id === id) {
         animalIndexToBeDeleted = i;
        break;
+        }
     }
-}
     if (animalIndexToBeDeleted !== null) {
         const deletedAnimal = animalList.splice(animalIndexToBeDeleted,1); // animal we found in for loop, we are now deleting
         await fs.writeFile(filePath, JSON.stringify(animalList, null, 3), "utf-8"); // stringify syntax: the value, the replacer, and then amount of white space
         return deletedAnimal;
     }
-return null 
+    return null 
+}
+
+// PATCH request to update a record
+export async function updateAnimaldetails(id, newAnimalName, newFact, newHabitat) {
+    const animalsJSON = await fs.readFile(filePath, "utf-8"); //reading the JSON file
+    const animalList = JSON.parse(animalsJSON); // putting the JSON into format that JS can read 
+    let updatedAnimal = null;
+    // find the animal by ID
+    for (let i = 0; i < animalList.length; i++) {
+        if (animalList[i].id === id) {
+            // update required data
+            updatedAnimal = animalList[i]
+            updatedAnimal.animalName = newAnimalName;
+            updatedAnimal.fact = newFact;
+            updatedAnimal.habitat = newHabitat;
+            break;
+    }
+    }
+    // return the json
+    await fs.writeFile(filePath, JSON.stringify(animalList, null, 3), "utf-8");
+    return updatedAnimal;
 }

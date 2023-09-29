@@ -12,7 +12,8 @@ import {
     addAnimal,
     allAnimals,
     animalByID,
-    deleteAnimal
+    deleteAnimal,
+    updateAnimaldetails
  } from "./animals.js";
 
 
@@ -76,4 +77,20 @@ app.delete("/animals/:id", async function (req, res) {
         )
 }
     return res.status(200).json(responseObject); 
+})
+
+// PATCH request to update a record
+app.patch("/animals/:id", async function (req, res) {
+    // make response object
+    const responseObject = {
+        status: 'success',
+        data: await updateAnimaldetails (
+            req.params.id,
+            req.query.newAnimalName,
+            req.query.newFact,
+            req.query.newHabitat
+        )
+    }
+    // send response with 200 code
+    return res.status(200).json(responseObject);
 })
