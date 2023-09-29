@@ -10,13 +10,14 @@ const port = 4000;
 //imported functions from animals.js
 import {
     addAnimal,
-    allAnimals
+    allAnimals,
+    animalByID
  } from "./animals.js";
 
 
 // Middleware
 app.use(express.json());
-app.use(morgan('tiny')); // logs status
+app.use(morgan('Request type: :method, Response time: :response-time ms, Status code: :status, URL: :url')); // logs status
 
 // Listener
 app.listen(port, function (){
@@ -50,6 +51,17 @@ app.get("/animals", async function(req, res){
         status: 'success',
         data: await allAnimals()
     }
-    // Send the resonse with a 200 codwe
+    // Send the response with a 200 code
+    return res.status(200).json(responseObject);
+})
+
+// Get request to return animal ID
+app.get("/animals/:id", async function(req, res){
+    // Making response object
+    const responseObject = {
+        status: 'success',
+        data: await animalByID(req.params.id)
+    }
+    // Send the response with a 200 code
     return res.status(200).json(responseObject);
 })

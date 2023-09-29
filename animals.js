@@ -30,3 +30,21 @@ export async function allAnimals () {
     const animalList = JSON.parse(animalsJSON); // putting the JSON into format that JS can read - like a translator 
     return animalList;
 }
+
+// GET animal by ID
+export async function animalByID(id) {
+    const animalsJSON = await fs.readFile(filePath, "utf-8"); //reading the JSON file
+    const animalList = JSON.parse(animalsJSON); // putting the JSON into format that JS can read 
+
+    // search for the animal by id
+    for (const animal of animalList) { // animal of animalList. instead of (const i = 0; i < animalList.length; i++)
+        // console.log(`loop counter ${animal}`) // debug logger
+        if (animal.id === id) {
+            return animal;
+        }
+        
+    } 
+
+
+    // Return the record
+}
