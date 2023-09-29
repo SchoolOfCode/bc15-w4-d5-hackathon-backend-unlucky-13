@@ -24,4 +24,4 @@ await fs.writeFile(filePath, JSON.stringify(animalList, null, 3), "utf-8"); // s
 return newAnimal;
 }
 
-addAnimal("bat", "the smallest species of bat is the size of a 5p coin!", "abandoned buildings");
+addAnimal("koi fish", "the oldest koi fish lived to around 200 years old", "ponds and rivers");
