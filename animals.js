@@ -51,6 +51,25 @@ return null;
     // Return the record
 }
 
+// STRETCH GOAL - searching for an animal by name
+// retrieve data and search through, use for loop for search
+// if match, return animal
+// if no match, return error message
+/*
+export async function animalByName(searchName) {
+    const animalsJSON = await fs.readFile(filePath, "utf-8"); //reading the JSON file
+    const animalList = JSON.parse(animalsJSON); // putting the JSON into format that JS can read 
+    const searchResult = null;
+    for (let i = 0; i < animalList.length; i++) {
+        if (animalList[i].animalName === searchName) {
+        searchResult = animalList[i];
+        return searchResult;
+        }
+    }
+    return "We don't have the animal you're searching for :("
+}
+*/
+
 // Delete animal from our database by ID
 export async function deleteAnimal(id) {
     const animalsJSON = await fs.readFile(filePath, "utf-8"); //reading the JSON file

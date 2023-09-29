@@ -13,7 +13,8 @@ import {
     allAnimals,
     animalByID,
     deleteAnimal,
-    updateAnimaldetails
+    updateAnimaldetails,
+    //animalByName
  } from "./animals.js";
 
 
@@ -67,6 +68,19 @@ app.get("/animals/:id", async function(req, res){
     // Send the response with a 200 code
     return res.status(200).json(responseObject);
 })
+
+// STRETCH GOAL - searching for an animal by name
+// GET request
+/*
+app.get("/animals?animalName", async function (req, res) {
+    
+    const responseObject = {
+        status: "success",
+        data: await animalByName (req.query.animalName)
+    }
+    return res.status(200).json(responseObject);
+})
+*/
 
 // Delete request to delete entry by animal ID
 app.delete("/animals/:id", async function (req, res) {
