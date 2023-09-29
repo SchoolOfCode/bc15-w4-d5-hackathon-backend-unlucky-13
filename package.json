@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Feel free to delete this and start from scratch.",
   "main": "animals.js",
+  "type": "module",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
