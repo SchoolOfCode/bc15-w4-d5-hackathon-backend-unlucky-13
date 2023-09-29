@@ -11,7 +11,8 @@ const port = 4000;
 import {
     addAnimal,
     allAnimals,
-    animalByID
+    animalByID,
+    deleteAnimal
  } from "./animals.js";
 
 
@@ -64,4 +65,15 @@ app.get("/animals/:id", async function(req, res){
     }
     // Send the response with a 200 code
     return res.status(200).json(responseObject);
+})
+
+// Delete request to delete entry by animal ID
+app.delete("/animals/:id", async function (req, res) {
+    const responseObject = {
+        status: "success",
+        data: await deleteAnimal (
+          req.params.id,
+        )
+}
+    return res.status(200).json(responseObject); 
 })

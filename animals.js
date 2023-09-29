@@ -36,15 +36,40 @@ export async function animalByID(id) {
     const animalsJSON = await fs.readFile(filePath, "utf-8"); //reading the JSON file
     const animalList = JSON.parse(animalsJSON); // putting the JSON into format that JS can read 
 
+
     // search for the animal by id
     for (const animal of animalList) { // animal of animalList. instead of (const i = 0; i < animalList.length; i++)
         // console.log(`loop counter ${animal}`) // debug logger
         if (animal.id === id) {
             return animal;
         }
-        
+    
     } 
-
+    //return null if ID not found 
+return null; 
 
     // Return the record
+}
+
+// Delete animal from our database by ID
+export async function deleteAnimal(id) {
+    const animalsJSON = await fs.readFile(filePath, "utf-8"); //reading the JSON file
+    const animalList = JSON.parse(animalsJSON); // putting the JSON into format that JS can read 
+
+    let animalIndexToBeDeleted = null; 
+
+// search for the animal by id 
+for (let i = 0; i < animalList.length; i++) { 
+    // console.log(`loop counter ${i}`) // debug logger
+    if (animalList[i].id === id) {
+        animalIndexToBeDeleted = i;
+       break;
+    }
+}
+    if (animalIndexToBeDeleted !== null) {
+        const deletedAnimal = animalList.splice(animalIndexToBeDeleted,1); // animal we found in for loop, we are now deleting
+        await fs.writeFile(filePath, JSON.stringify(animalList, null, 3), "utf-8"); // stringify syntax: the value, the replacer, and then amount of white space
+        return deletedAnimal;
+    }
+return null 
 }
