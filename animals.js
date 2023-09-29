@@ -23,3 +23,5 @@ animalList.push(newAnimal);
 await fs.writeFile(filePath, JSON.stringify(animalList, null, 3), "utf-8"); // stringify syntax: the value, the replacer, and then amount of white space
 return newAnimal;
 }
+
+addAnimal("bat", "the smallest species of bat is the size of a 5p coin!", "abandoned buildings");
