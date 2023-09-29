@@ -7,7 +7,7 @@ const filePath = path.resolve(process.cwd(), "animals.json") // creating an abso
 
 // Function to first construct the animal object, and then add it
 
-async function addAnimal (animalName, fact, habitat) {
+export async function addAnimal (animalName, fact, habitat) {
    const animalsJSON = await fs.readFile(filePath, "utf-8"); // reading the JSON file
    const animalList = JSON.parse(animalsJSON); // putting the JSON into format that JS can read - like a translator 
    // creating the new animal:
@@ -23,5 +23,6 @@ animalList.push(newAnimal);
 await fs.writeFile(filePath, JSON.stringify(animalList, null, 3), "utf-8"); // stringify syntax: the value, the replacer, and then amount of white space
 return newAnimal;
 }
+
 
 addAnimal("koi fish", "the oldest koi fish lived to around 200 years old", "ponds and rivers");
